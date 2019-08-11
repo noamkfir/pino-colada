@@ -29,10 +29,12 @@
     "standard": "^8.6.0"
   },
   "dependencies": {
+    "@boco/pino-pretty": "^3.3.1-alpha-4",
     "chalk": "^2.0.1",
     "fast-json-parse": "^1.0.2",
     "pad-left": "^2.1.0",
     "pad-right": "^0.2.2",
+    "pino": "^5.13.2",
     "prettier-bytes": "^1.0.3",
     "pretty-ms": "^2.1.0",
     "split2": "^2.1.1"
