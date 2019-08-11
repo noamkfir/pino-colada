@@ -20,7 +20,7 @@ const levels = {
     60: 'fatal'
 }
 
-const prettifyDate = {
+const processDate = {
     parse (input, { colorizer, prettified }) {
         var date = new Date()
         var hours = padLeft(date.getHours().toString(), 2, '0')
@@ -35,7 +35,7 @@ const prettifyDate = {
     }
 }
 
-const prettifyLevel = {
+const processLevel = {
     parse (input, { prettified }) {
         const emoji = emojiLog[levels[input.level]]
         const isWideEmoji = emoji !== '⚠️'
@@ -48,7 +48,7 @@ const prettifyLevel = {
     }
 }
 
-const prettifyMessage = {
+const processMessage = {
     parse (input, { prettified, colorizer }) {
         prettified.message = colorizer(input.msg)
         return input
@@ -58,7 +58,7 @@ const prettifyMessage = {
     }
 }
 
-const prettifyMethod = {
+const processMethod = {
     parse (input, { prettified, colorizer }) {
         prettified.method = colorizer(input.req.method, 'white')
         prettified.statusCode = colorizer(input.res.statusCode || 'xxx', 'white')
@@ -71,7 +71,7 @@ const prettifyMethod = {
     }
 }
 
-const prettifyUrl = {
+const processUrl = {
     parse (input, { prettified, colorizer }) {
         const { url } = input.req
         if (url != null) {
@@ -86,7 +86,7 @@ const prettifyUrl = {
     }
 }
 
-const prettifyResponseTime = {
+const processResponseTime = {
     parse (input, { prettified, colorizer }) {
         const responseTime = input.responseTime || input.elapsed
         if (responseTime != null) {
@@ -103,7 +103,7 @@ const prettifyResponseTime = {
     }
 }
 
-const prettifyContentLength = {
+const processContentLength = {
     parse (input, { colorizer, prettified }) {
         const { _contentLength } = input.res.raw
         if (_contentLength != null) {
@@ -121,11 +121,11 @@ const prettifyContentLength = {
 }
 
 module.exports = {
-    prettifyDate,
-    prettifyLevel,
-    prettifyMessage,
-    prettifyMethod,
-    prettifyUrl,
-    prettifyResponseTime,
-    prettifyContentLength,
+    processDate,
+    processLevel,
+    processMessage,
+    processMethod,
+    processUrl,
+    processResponseTime,
+    processContentLength,
 }
